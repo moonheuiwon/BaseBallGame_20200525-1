@@ -5,6 +5,7 @@ import androidx.databinding.DataBindingUtil;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,20 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void setupEvents() {
+
+        binding.sendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                전송버튼 누르면 => 타이핑 된 값을 받아오기
+                String inputValue = binding.numEdt.getText().toString();
+//                 새로운 메세지로 등록
+                messages.add(new Message(inputValue,"Me"));
+//                리스트뷰의 내용물 변화 발생
+                messageAdapter.notifyDataSetChanged();
+//                리스트뷰를 맨 밑으로 끌어내려주자.
+                binding.messageListView.smoothScrollToPosition(messages.size()-1);
+            }
+        });
 
     }
 

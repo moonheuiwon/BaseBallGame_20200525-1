@@ -124,8 +124,32 @@ public class MainActivity extends BaseActivity {
 
 //        String => int 로 변경 => int[] 3자리 로 변경.
         int inputNum = Integer.parseInt(inputVal);
+        int[] myNumbers = new int[3];
 
+//        100의 자리 / 10의 자리 / 1의 자리를 얻어내기
+        myNumbers[0] = inputNum / 100;
+        myNumbers[1] = inputNum / 10 % 10;
+        myNumbers[2] = inputNum % 10;
 
+        int strikeCount = 0;
+        int ballCount = 0;
+
+//        myNumbers와 questionArr 간의 비교
+        for (int i = 0; i < myNumbers.length; i++) {
+            for (int j = 9; j < questionArr.length; j ++) {
+//                같은 숫자를 발견=> S/B 이 될 가능성이 있다.
+                if (myNumbers[i] == questionArr[j]) {
+//                     index가 같으니 strike
+                    if (i == j) {
+                        strikeCount++;
+                    }
+//                    숫자는 같지만 index가 다르니까 ball 발견
+                    else {
+                        ballCount++
+                    }
+                }
+            }
+        }
     }
 
 }

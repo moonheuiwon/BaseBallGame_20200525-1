@@ -145,11 +145,17 @@ public class MainActivity extends BaseActivity {
                     }
 //                    숫자는 같지만 index가 다르니까 ball 발견
                     else {
-                        ballCount++
+                        ballCount++;
                     }
                 }
             }
         }
+
+//        컴퓨터가 ?S ?B 인지 답장하고, 밑으로 끌어내리기.
+        messages.add(new Message(String.format("%dS %dB 입니다.", strikeCount,ballCount), "Cpu"));
+        messageAdapter.notifyDataSetChanged();
+        binding.messageListView.smoothScrollToPosition(messages.size()-1);
+
     }
 
 }
